@@ -6,32 +6,54 @@ using System.Threading.Tasks;
 
 namespace Blackjack.Models
 {
-    public class Card
+    public class Hand
     {
         //==============================================================================================
         // PROPERTIES & ACCESSORS
         //==============================================================================================
-        public string Suit { get; }
-        public string Symbol { get; }
-        public string Rank { get; }
-        public string Name { get; }
-        public int Value { get; }
+        private List<Card> Cards;
+        private readonly Deck _Deck;
 
         //==============================================================================================
-        // CONSTRUCTORS
+        // CONSTRUCTOR
         //==============================================================================================
-        public Card(String suit, string symbol, string rank, string name, int value)
+        public Hand(ref Deck deck) 
         {
-            Suit = suit;
-            Symbol = symbol;
-            Rank = rank;
-            Name = name;
-            Value = value;
+            Cards = new List<Card>();
+            _Deck = deck;
         }
 
         //==============================================================================================
         // FUNCTIONS & PROCEDURES
         //==============================================================================================
-        public override string ToString() => $"{Symbol} - {Name}";
+        public void Draw() 
+        {
+            if (this.Count() < 5) 
+            {
+                Cards.Add(_Deck.DrawCard());
+            }
+                
+        }
+        
+        public void Throw() 
+        {
+            Cards.Clear();
+        }
+
+        public int Calculate() 
+        {
+            int total = 0;
+            if(Cards.Count > 0) 
+            {
+                foreach (Card card in Cards) 
+                {
+                    total = total + card.Value;
+                }
+            }
+            return total;
+        }
+
+        public int Count() => Cards.Count;
+
     }
 }

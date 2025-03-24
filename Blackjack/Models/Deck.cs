@@ -29,17 +29,19 @@ namespace Blackjack.Models
         {
             // Defines families, names and values
             string[] suits = { "Hearts", "Diamonds", "Spades", "Clubs" };
+            string[] symbols = { "♥", "♦", "♠", "♣" };
             string[] ranks = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
+            string[] names = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
             int[] values = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11 };
 
             // Looping through each family
-            foreach (string s in suits)
+            for (int i = 0; i < suits.Length; i++)
             {
                 // Looping through every cards (13)
-                for (int i = 0; i < ranks.Length; i++)
+                for (int j = 0; j < ranks.Length; j++)
                 {
                     // Adds a card into the deck
-                    _deck.Add(new Card(s, ranks[i], values[i]));
+                    _deck.Add(new Card(suits[i], symbols[i], ranks[j], names[j], values[j]));
                 }
             }
         }
@@ -68,6 +70,11 @@ namespace Blackjack.Models
                 // Error handler (empty deck)
                 throw new InvalidOperationException("Deck is empty");
             }
+        }
+
+        public Card Card(int index)
+        {
+            return _deck[index];
         }
 
         public int Count() => _deck.Count;

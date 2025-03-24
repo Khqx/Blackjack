@@ -6,32 +6,32 @@ using System.Threading.Tasks;
 
 namespace Blackjack.Models
 {
-    public class Card
+    public class Player
     {
         //==============================================================================================
         // PROPERTIES & ACCESSORS
         //==============================================================================================
-        public string Suit { get; }
-        public string Symbol { get; }
-        public string Rank { get; }
         public string Name { get; }
-        public int Value { get; }
+        public bool IsHuman { get; }
+        public int Money { get; }
+        public Hand Hand { get; }
+
 
         //==============================================================================================
-        // CONSTRUCTORS
+        // CONSTRUCTOR
         //==============================================================================================
-        public Card(String suit, string symbol, string rank, string name, int value)
-        {
-            Suit = suit;
-            Symbol = symbol;
-            Rank = rank;
+        public Player(string name, bool isHuman, ref Deck deck) 
+        { 
             Name = name;
-            Value = value;
+            IsHuman = isHuman;
+            Hand = new Hand(ref deck);
         }
+
 
         //==============================================================================================
         // FUNCTIONS & PROCEDURES
         //==============================================================================================
-        public override string ToString() => $"{Symbol} - {Name}";
+
+
     }
 }
