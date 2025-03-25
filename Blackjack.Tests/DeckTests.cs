@@ -43,6 +43,23 @@ namespace Blackjack.Tests
         }
 
         [Fact]
+        public void Deck_ControlThatCardsAreDistinct()
+        {
+            List<Card> cards = new List<Card>();
+            Deck deck = new Deck();
+
+            while (deck.Count() > 0)
+            {
+                if (!cards.Contains(deck.Card(0)))
+                    cards.Add(deck.DrawCard());
+                else
+                    deck.DrawCard();
+            }
+            Assert.Equal(0, deck.Count());
+            Assert.Equal(52, cards.Count);
+        }
+
+        [Fact]
         public void Decks_Compare()
         {
             Deck deck1 = new Deck();

@@ -1,6 +1,4 @@
 ﻿using Blackjack.Models;
-using NuGet.Frameworks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Blackjack.Tests
 {
@@ -75,7 +73,5 @@ namespace Blackjack.Tests
             Assert.Equal(47, _deck.Count());
             Assert.Equal(5, _hand.Count());
         }
-
-
     }
 }

@@ -11,7 +11,7 @@ namespace Blackjack.Models
         //==============================================================================================
         // PROPERTIES & ACCESSORS
         //==============================================================================================
-        private List<Card> Cards;
+        public List<Card> Cards;
         private readonly Deck _Deck;
 
         //==============================================================================================
@@ -43,11 +43,27 @@ namespace Blackjack.Models
         public int Calculate() 
         {
             int total = 0;
+            
+
             if(Cards.Count > 0) 
             {
-                foreach (Card card in Cards) 
+                List<Card> subCards = new List<Card>(Cards);
+                subCards.OrderBy(c => c.Value);
+
+                foreach (Card sub in subCards) 
                 {
-                    total = total + card.Value;
+                    if (sub.Rank == "Ace" && (sub.Value + total > 21)) 
+                    {
+                        if (sub.Rank == "Ace" && (sub.Value - 1 + total > 21))
+                        {
+                            total = total + 1;
+                        }
+                        else
+                        {
+                            total = total + 10;
+                        }
+                    }
+                    total = total + sub.Value;
                 }
             }
             return total;

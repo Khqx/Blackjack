@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blackjack.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,19 +12,19 @@ namespace Blackjack.Models
         //==============================================================================================
         // PROPERTIES & ACCESSORS
         //==============================================================================================
-        public string Suit { get; }
-        public string Symbol { get; }
-        public string Rank { get; }
-        public string Name { get; }
+        public string Suit { get; } // Spades, Clubs, Hearts, Diamonds
+        public string Symbol { get; } // u2660, u2663, u2665, u2666
+        public string Rank { get; } // LongName: Jack, Queen, King, Ace
+        public string Name { get; } // ShortName: J, Q, K, A
         public int Value { get; }
 
         //==============================================================================================
         // CONSTRUCTORS
         //==============================================================================================
-        public Card(String suit, string symbol, string rank, string name, int value)
+        public Card(String suit, SuitHelper.Suit symbol, string rank, string name, int value)
         {
             Suit = suit;
-            Symbol = symbol;
+            Symbol = SuitHelper.Symbol(symbol);
             Rank = rank;
             Name = name;
             Value = value;

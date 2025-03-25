@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blackjack.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,8 +29,8 @@ namespace Blackjack.Models
         private void InitializeDeck()
         {
             // Defines families, names and values
-            string[] suits = { "Hearts", "Diamonds", "Spades", "Clubs" };
-            string[] symbols = { "♥", "♦", "♠", "♣" };
+            SuitHelper.Suit[] symbols = { SuitHelper.Suit.Spades, SuitHelper.Suit.Clubs, SuitHelper.Suit.Hearts, SuitHelper.Suit.Diamonds };
+            string[] suits = { "Spades", "Clubs", "Hearts", "Diamonds" };
             string[] ranks = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
             string[] names = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
             int[] values = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11 };
