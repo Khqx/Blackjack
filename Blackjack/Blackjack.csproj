@@ -10,7 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Localization\translations_all.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Resources\Icons\blackjack.ico" />
+    <EmbeddedResource Include="Resources\Localization\translations_all.csv" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,7 +25,6 @@
   <ItemGroup>
     <Folder Include="Resources\Images\" />
     <Folder Include="UI\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

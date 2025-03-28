@@ -1,2 +1,5 @@
-CodeName;en-EN;fr-FR;sv-SV
-TEST_LOCALE;"New Game";"Nouvelle Partie";"Nytt Spel"
+CODENAME;en-EN;fr-FR;sv-SV
+TEST_VAR1;New Game;Nouvelle Partie;Nytt Spel
+TEST_VAR2;Very good!;Très bien!;Kanonbra!
+TEST_VAR3;You have won ##MONEY## dollars;Vous avez gagné ##MONEY## dollars;Du har vunnit ##MONEY## dollar
+TEST_VAR4;You have won ##MONEY## dollars;Vous avez gagné ##MONEY## dollars;Du har vunnit ##MONEY## dollar

@@ -1,10 +1,10 @@
 ﻿using Blackjack.Helpers;
+using Blackjack.Controllers;
 using Xunit.Abstractions;
-using static Blackjack.Helpers.SuitHelper;
 
 namespace Blackjack.Tests
 {
-    public class QuickTest
+    public class XQT
     {
         //==============================================================================================
         // PROPERTIES & ACCESSORS
@@ -14,13 +14,13 @@ namespace Blackjack.Tests
         //==============================================================================================
         // CONSTRUCTOR
         //==============================================================================================
-        public QuickTest(ITestOutputHelper output)
+        public XQT(ITestOutputHelper output)
         {
             _output = output;
         }
 
         [Fact]
-        public void Sample()
+        public void QuickTest()
         {
             
         }
