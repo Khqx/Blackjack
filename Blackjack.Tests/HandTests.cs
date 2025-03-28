@@ -7,8 +7,8 @@ namespace Blackjack.Tests
         //==============================================================================================
         // PROPERTIES & ACCESSORS
         //==============================================================================================
-        private Deck _deck;
-        private Hand _hand;
+        private readonly Deck _deck;
+        private readonly Hand _hand;
 
         //==============================================================================================
         // CONSTRUCTOR
@@ -25,36 +25,36 @@ namespace Blackjack.Tests
         [Fact]
         public void NewHand_Creation() 
         {
-            Assert.Equal(0, _hand.Count());
+            Assert.Empty(_hand.Cards);
         }
 
         [Fact]
         public void NewHand_DrawCardFromDeck()
         {
             Assert.Equal(52, _deck.Count());
-            Assert.Equal(0, _hand.Count());
+            Assert.Empty(_hand.Cards);
             
             _hand.Draw();
             
             Assert.Equal(51, _deck.Count());
-            Assert.Equal(1, _hand.Count());
+            Assert.Single(_hand.Cards);
         }
 
         [Fact]
         public void NewHand_DrawCardAndThrowHand()
         {
             Assert.Equal(52, _deck.Count());
-            Assert.Equal(0, _hand.Count());
+            Assert.Empty(_hand.Cards);
 
             _hand.Draw();
 
             Assert.Equal(51, _deck.Count());
-            Assert.Equal(1, _hand.Count());
+            Assert.Single(_hand.Cards);
 
             _hand.Throw();
 
             Assert.Equal(51, _deck.Count());
-            Assert.Equal(0, _hand.Count());
+            Assert.Empty(_hand.Cards);
         }
 
         [Theory]
@@ -63,7 +63,7 @@ namespace Blackjack.Tests
         public void NewHand_DrawMax5Cards(int draws)
         {
             Assert.Equal(52, _deck.Count());
-            Assert.Equal(0, _hand.Count());
+            Assert.Empty(_hand.Cards);
 
             for (int i = 0; i < draws; i++)
             {
@@ -71,7 +71,7 @@ namespace Blackjack.Tests
             }
 
             Assert.Equal(47, _deck.Count());
-            Assert.Equal(5, _hand.Count());
+            Assert.Equal(5, _hand.Cards.Count);
         }
     }
 }

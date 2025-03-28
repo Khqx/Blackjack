@@ -13,7 +13,7 @@ namespace Blackjack.Models
         //==============================================================================================
         public string Name { get; }
         public bool IsHuman { get; }
-        public int Money { get; }
+        public int Money { get; set; }
         public Hand Hand { get; }
 
 

@@ -1,9 +1,4 @@
 ﻿using Blackjack.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blackjack.Models
 {
@@ -14,8 +9,8 @@ namespace Blackjack.Models
         //==============================================================================================
         public string Suit { get; } // Spades, Clubs, Hearts, Diamonds
         public string Symbol { get; } // u2660, u2663, u2665, u2666
-        public string Rank { get; } // LongName: Jack, Queen, King, Ace
-        public string Name { get; } // ShortName: J, Q, K, A
+        public string Rank { get; } // ShortName: J, Q, K, A
+        public string Name { get; } // LongName: Jack, Queen, King, Ace
         public int Value { get; }
 
         //==============================================================================================
@@ -33,6 +28,6 @@ namespace Blackjack.Models
         //==============================================================================================
         // FUNCTIONS & PROCEDURES
         //==============================================================================================
-        public override string ToString() => $"{Symbol} - {Name}";
+        public override string ToString() => $"{Symbol} - {Rank}";
     }
 }

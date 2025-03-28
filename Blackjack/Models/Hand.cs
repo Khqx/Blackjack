@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using Blackjack.Helpers;
 
 namespace Blackjack.Models
 {
@@ -11,8 +8,10 @@ namespace Blackjack.Models
         //==============================================================================================
         // PROPERTIES & ACCESSORS
         //==============================================================================================
-        public List<Card> Cards;
         private readonly Deck _Deck;
+        public List<Card> Cards;
+        public int Score { get; private set; }
+        public bool IsOverflow { get; private set; }
 
         //==============================================================================================
         // CONSTRUCTOR
@@ -21,6 +20,8 @@ namespace Blackjack.Models
         {
             Cards = new List<Card>();
             _Deck = deck;
+            Score = 0;
+            IsOverflow = false;
         }
 
         //==============================================================================================
@@ -28,48 +29,25 @@ namespace Blackjack.Models
         //==============================================================================================
         public void Draw() 
         {
-            if (this.Count() < 5) 
-            {
-                Cards.Add(_Deck.DrawCard());
-            }
-                
+            // If allowed to draw
+            if (RuleHelper.CanDraw(Cards.Count)) 
+                // Draws a card from the deck
+                Cards.Add(_Deck.DrawCard());    
         }
         
         public void Throw() 
         {
+            // Clears the list of Cards from the Hand
             Cards.Clear();
         }
 
-        public int Calculate() 
+        public void Calculate() 
         {
-            int total = 0;
-            
-
-            if(Cards.Count > 0) 
-            {
-                List<Card> subCards = new List<Card>(Cards);
-                subCards.OrderBy(c => c.Value);
-
-                foreach (Card sub in subCards) 
-                {
-                    if (sub.Rank == "Ace" && (sub.Value + total > 21)) 
-                    {
-                        if (sub.Rank == "Ace" && (sub.Value - 1 + total > 21))
-                        {
-                            total = total + 1;
-                        }
-                        else
-                        {
-                            total = total + 10;
-                        }
-                    }
-                    total = total + sub.Value;
-                }
-            }
-            return total;
+            // Updates the Hand score
+            Score = RuleHelper.Calculate(this);
+            // Updates the Hand overflow state
+            IsOverflow = RuleHelper.IsOverflow(Score);
         }
-
-        public int Count() => Cards.Count;
 
     }
 }
